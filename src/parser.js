@@ -1,11 +1,14 @@
 const s = require('./stack')
-const h = require('./helper')
+
+const isNum = str => /^(\-|\+)?\d+$/.test(str)
+
+const isStr = str => /^".*"$/.test(str)
 
 const toFunc = str => {
-  if (h.isNum(str)) {
+  if (isNum(str)) {
     return s.push(parseInt(str, 10))
   }
-  if (h.isStr(str)) {
+  if (isStr(str)) {
     return s.push(str)
   }
   switch (str) {
@@ -27,5 +30,7 @@ const toFunc = str => {
 }
 
 module.exports = {
+  isNum,
+  isStr,
   toFunc,
 }

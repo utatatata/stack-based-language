@@ -1,10 +1,10 @@
-const h = require('../src/helper')
+const p = require('../src/parser')
 
-describe('helper', () => {
+describe('parser', () => {
   describe('isNum', () => {
     const testIsNum = (str, result) =>
       test(`${str} is ${result ? '' : 'not '}a number`, () => {
-        expect(h.isNum(str)).toBe(result)
+        expect(p.isNum(str)).toBe(result)
       })
 
     testIsNum('123', true)
@@ -21,7 +21,7 @@ describe('helper', () => {
   describe('isStr', () => {
     const testIsStr = (str, result) =>
       test(`${str} is ${result ? '' : 'not '}a string`, () => {
-        expect(h.isStr(str)).toBe(result)
+        expect(p.isStr(str)).toBe(result)
       })
 
     testIsStr(`"abc"`, true)
