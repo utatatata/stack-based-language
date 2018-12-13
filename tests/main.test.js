@@ -12,4 +12,5 @@ describe('sbl', () => {
   testSbl('-1 +4 +', [3])
   testSbl('2 -8 +', [-6])
   testSbl('11 3 -', [-8])
+  testSbl('drop "123" "" swap drop', ['""'])
 })

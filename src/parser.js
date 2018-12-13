@@ -5,6 +5,9 @@ const toFunc = str => {
   if (h.isNum(str)) {
     return stack => s.push(stack, parseInt(str, 10))
   }
+  if (h.isStr(str)) {
+    return stack => s.push(stack, str)
+  }
   switch (str) {
     case '+':
       return stack => s.apply2(stack, (a, b) => a + b)
