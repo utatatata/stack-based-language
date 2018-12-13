@@ -1,11 +1,9 @@
 const s = require('./stack')
 const h = require('./helper')
 
-const toNumberFunc = n => stack => s.push(stack, n)
-
 const toFunc = str => {
   if (h.isNum(str)) {
-    return toNumberFunc(parseInt(str, 10))
+    return stack => s.push(stack, parseInt(str, 10))
   }
   switch (str) {
     case '+':
@@ -26,6 +24,5 @@ const toFunc = str => {
 }
 
 module.exports = {
-  toNumberFunc,
   toFunc,
 }
