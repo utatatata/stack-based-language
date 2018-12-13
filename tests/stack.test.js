@@ -6,7 +6,7 @@ describe('stack', () => {
   describe('push', () => {
     const testPush = (stack, value, result) =>
       test(`push ${value} to ${toStr(stack)} to be ${toStr(result)}`, () => {
-        expect(s.push(stack, value)).toEqual(result)
+        expect(s.push(value)(stack)).toEqual(result)
       })
 
     testPush([], 3, [3])
@@ -39,7 +39,7 @@ describe('stack', () => {
   describe('apply', () => {
     const testApplyN = (stack, f, n, result) =>
       test(`apply ${f} to ${toStr(stack)} to be ${toStr(result)}`, () => {
-        expect(s.applyN(stack, n, f)).toEqual(result)
+        expect(s.applyN(n, f)(stack)).toEqual(result)
       })
 
     testApplyN([-3], a => a + 8, 1, [5])
