@@ -1,12 +1,11 @@
-const push = (stack, value) => [value].concat(stack)
+const push = (stack, value) => [value, ...stack]
 
-const drop = stack => stack.slice(1)
+const drop = ([_, ...xs]) => xs
 
-const swap = stack =>
-  stack.length < 2 ? stack :
-    [stack[1], stack[0]].concat(stack.slice(2))
+const swap = ([x1, x2, ...xs]) =>
+  x1 === void 0 ? [] : x2 === void 0 ? [x1] : [x2, x1, ...xs]
 
-const applyN = (stack, n, f) => [f(...stack.slice(0, n))].concat(stack.slice(n))
+const applyN = (stack, n, f) => [f(...stack.slice(0, n)), ...stack.slice(n)]
 
 const apply = (stack, f) => applyN(stack, 1, f)
 
