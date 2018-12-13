@@ -16,6 +16,10 @@ const toFunc = str => {
       return stack => s.apply2(stack, (a, b) => a * b)
     case '/':
       return stack => s.apply2(stack, (a, b) => a / b)
+    case 'drop':
+      return s.drop
+    case 'swap':
+      return s.swap
     default:
       throw new Error(`unexpected token: function '${str}' not found`)
   }

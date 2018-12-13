@@ -13,6 +13,29 @@ describe('stack', () => {
     testPush([2], -2, [-2, 2])
   })
 
+  describe('drop', () => {
+    const testDrop = (stack, result) =>
+      test(`drop from ${toStr(stack)} to be ${toStr(result)}`, () => {
+        expect(s.drop(stack)).toEqual(result)
+      })
+
+    testDrop([1, 2, 3], [2, 3])
+    testDrop([1], [])
+    testDrop([], [])
+  })
+
+  describe('swap', () => {
+    const testSwap = (stack, result) =>
+      test(`swap ${toStr(stack)} to be ${toStr(result)}`, () => {
+        expect(s.swap(stack)).toEqual(result)
+      })
+
+    testSwap([8, 2], [2, 8])
+    testSwap([-11, 5, 0], [5, -11, 0])
+    testSwap([3], [3])
+    testSwap([], [])
+  })
+
   describe('apply', () => {
     const testApplyN = (stack, f, n, result) =>
       test(`apply ${f} to ${toStr(stack)} to be ${toStr(result)}`, () => {
